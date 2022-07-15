@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { Button, TextField } from "@mui/material";
+import React, { useState } from "react";
 
 const ToDoForm = ({ handleClick }) => {
   const [todo, setTodo] = useState("");
@@ -7,20 +8,23 @@ const ToDoForm = ({ handleClick }) => {
     <div className="todo-form">
       <p>~ Today I need to ~</p>
       <span>
-        <input
+        <TextField
           value={todo}
           onChange={(e) => {
             setTodo(e.target.value);
           }}
+          variant="outlined"
+          label="To do"
         />
-        <button
+        <Button
           onClick={() => {
             handleClick(todo);
             setTodo("");
           }}
+          variant="contained"
         >
           Submit
-        </button>
+        </Button>
       </span>
     </div>
   );
