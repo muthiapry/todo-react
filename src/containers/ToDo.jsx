@@ -1,13 +1,11 @@
+import { Button } from "@mui/material";
 import React, { useState } from "react";
 
 import ToDoForm from "../components/ToDoForm";
 import ToDoList from "../components/ToDoList";
 
 const ToDo = () => {
-  const [todos, setTodos] = useState([
-    { id: 1, task: "menyapu", complete: false },
-    { id: 2, task: "mengepel", complete: true },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const handleClick = (todo) => {
     // state is immutable, you need to replace the whole array
@@ -28,11 +26,19 @@ const ToDo = () => {
     setTodos(newTodos);
   };
 
+  const removeCompleted = () => {
+    const newTodos = todos.filter((todo) => !todo.complete);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="todo">
       <h2 className="title">To-Do List</h2>
       <ToDoForm handleClick={handleClick} />
       <ToDoList todos={todos} handleCheckbox={handleCheckbox} />
+      <Button variant="outlined" color="error" onClick={removeCompleted}>
+        Remove Completed
+      </Button>
     </div>
   );
 };

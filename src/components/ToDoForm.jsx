@@ -9,19 +9,19 @@ const ToDoForm = ({ handleClick }) => {
       <p>~ Today I need to ~</p>
       <span>
         <TextField
+          label="Task"
+          variant="filled"
           value={todo}
           onChange={(e) => {
             setTodo(e.target.value);
           }}
-          variant="outlined"
-          label="To do"
         />
         <Button
+          variant="contained"
           onClick={() => {
             handleClick(todo);
             setTodo("");
           }}
-          variant="contained"
         >
           Submit
         </Button>
